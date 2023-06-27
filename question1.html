@@ -14,8 +14,8 @@
         rel="stylesheet">
 </head>
 
-<body>
-    <div class="progress-bar"><div class="progress1"></div></div>
+<body onload="init()">
+    <div class="progress-bar" id="progress-bar"><div class="progress1" id="progress1"></div></div>
 
     <div class="card">
         <nav>
@@ -42,34 +42,35 @@
         </nav>
         <div class="quiz-container">
             <div class="quiz-container-background">
-                <div class="content-question">
-                    <h2>Wer hat HTML erfunden?</h2>
-                    <div class="question-card">
+                <div class="content-question" id="content-question">
+                    <h2 id="question"></h2>
+                    <div class="question-card" id="question-card1">
                         <div class="letter">A</div>
-                        <span>Robbie Williams</span>
+                        <span id="answer1"></span>
                     </div>
-                    <div class="question-card">
+                    <div class="question-card" id="question-card2">
                         <div class="letter">B</div>
-                        <span>Lady Gaga</span>
+                        <span id="answer2"></span>
                     </div>
-                    <div class="question-card">
+                    <div class="question-card" id="question-card3">
                         <div class="letter">C</div>
-                        <span>Tim Berners - Lee</span>
+                        <span id="answer3"></span>
                     </div>
-                    <div class="question-card">
+                    <div class="question-card" id="question-card4">
                         <div class="letter">D</div>
-                        <span>Justin Bieber</span>
+                        <span id="answer4"></span>
                     </div>
-                </div>
+                    <div id="question1"></div>
+                </div>               
             </div>
         </div>
     </div>
     <div class="nav-bottom">
         <a>
-            <div class="arrow-icon"><img src="./img/chevron-left-black.svg"></div>
+            <div class="arrow-icon" onclick="navigateQuestionsBackward()"><img src="./img/chevron-left-black.svg"></div>
         </a>
         <a>
-            <div class="arrow-icon"><img src="./img/chevron-right-black.svg"></div>
+            <div class="arrow-icon" onclick="navigateQuestionsForward()"><img src="./img/chevron-right-black.svg"></div>
         </a>
     </div>
 
