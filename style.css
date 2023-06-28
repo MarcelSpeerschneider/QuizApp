@@ -239,9 +239,51 @@ button:hover {
 }
 
 .rightAnswer {
-    background-color: green;
+    background-color: rgba(57, 209, 57, 0.5);
 }
 
 .wrongAnswer {
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.brainresult {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.brainresult img{
+    width: 100px;
+    margin-bottom: 16px;
+}
+
+h3 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+
+}
+
+.score {
+    color: orange;
+    font-size: 24px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    margin-top: 24px;
+}
+
+.share-button {
+    background-color: blue;
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    font-size: 24px;
+    font-weight: 100;
+    margin: 32px 8px 32px 8px;
+}
+
+.hide {
+    display: none;
 }
