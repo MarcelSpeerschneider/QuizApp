@@ -158,8 +158,13 @@ function init() {
 };
 
 function getTopic(i) {
+
     topic = i;
-    init();
+    let upperCase = topic.toUpperCase();
+
+    document.getElementById('topic-headline').innerHTML = /*html*/`
+        The Awesome ${upperCase} Quiz
+        `;
 }
 
 function navigateQuestionsForward() {
@@ -181,9 +186,9 @@ function navigateQuestionsForward() {
             <button class="share-button">SHARE</button>
             
             `;
-
-            document.getElementById ('arrow-left').classList.add('hide');
-            document.getElementById ('arrow-right').classList.add('hide');
+        document.getElementById('progress1').classList.add(`progress${questionCount + 2}`);
+        document.getElementById('arrow-left').classList.add('hide');
+        document.getElementById('arrow-right').classList.add('hide');
     }
     answerLimit = 0;
     document.getElementById('arrow-left').disabled = true;
@@ -199,7 +204,6 @@ function removeBackground() {
 
 };
 
-
 function navigateQuestionsBackward() {
     if (questionCount > 0) {
         questionCount--;
@@ -214,19 +218,59 @@ function navigateQuestionsBackward() {
     answerLimit = 0;
 };
 
+function showQuestionCards() {
+
+    document.getElementById('content-question').innerHTML = /*html*/ `
+    <h2 id="question"></h2>
+                    <div class="question-card" id="question-card1" onclick="checkAnswer(1)">
+                        <div class="letter">A</div>
+                        <span id="answer1"></span>
+                    </div>
+                    <div class="question-card" id="question-card2" onclick="checkAnswer(2)">
+                        <div class="letter">B</div>
+                        <span id="answer2"></span>
+                    </div>
+                    <div class="question-card" id="question-card3" onclick="checkAnswer(3)">
+                        <div class="letter">C</div>
+                        <span id="answer3"></span>
+                    </div>
+                    <div class="question-card" id="question-card4" onclick="checkAnswer(4)">
+                        <div class="letter">D</div>
+                        <span id="answer4"></span>
+                    </div>
+                    <div id="question1"></div>
+    `;
+    init();
+}
+
 function showQuestion() {
-    let currentQuestion = questions[0][topic][questionCount]['question'];
 
-    document.getElementById('question').innerHTML = `${currentQuestion}`;
+    if (document.getElementById('question')) {
+        let currentQuestion = questions[0][topic][questionCount]['question'];
 
-    for (let i = 1; i < 5; i++) {
-        document.getElementById(`answer${i}`).innerHTML = /* html */ `<p>${questions[0][topic][questionCount][`answer_${i}`]}</p>`;
+        document.getElementById('question').innerHTML = `${currentQuestion}`;
+
+        for (let i = 1; i < 5; i++) {
+            document.getElementById(`answer${i}`).innerHTML = /* html */ `<p>${questions[0][topic][questionCount][`answer_${i}`]}</p>`;
+        }
+
+        document.getElementById('nav-bottom').innerHTML = /* html */` <a>
+        <button class="arrow-icon" id="arrow-left" onclick="navigateQuestionsBackward()" disabled><img
+                src="./img/chevron-left-black.svg"></button>
+    </a>
+    <a>
+        <button class="arrow-icon" id="arrow-right" onclick="navigateQuestionsForward()" disabled><img
+                src="./img/chevron-right-black.svg"></button>
+    </a>
+    `;
     }
 };
 
 function ShowQuestionNumber() {
     let ShowQuestionNumber = document.getElementById('question1');
-    ShowQuestionNumber.innerHTML = `Frage ${questionCount + 1} von ${questions[0][topic].length}`;
+    if (ShowQuestionNumber) {
+        ShowQuestionNumber.innerHTML = `Frage ${questionCount + 1} von ${questions[0][topic].length}`;
+    }
 };
 
 function checkAnswer(chosedAnswer) {
