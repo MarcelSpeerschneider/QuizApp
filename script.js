@@ -186,6 +186,8 @@ function navigateQuestionsForward() {
             document.getElementById ('arrow-right').classList.add('hide');
     }
     answerLimit = 0;
+    document.getElementById('arrow-left').disabled = true;
+    document.getElementById('arrow-right').disabled = true;
 };
 
 function removeBackground() {
@@ -227,21 +229,25 @@ function ShowQuestionNumber() {
     ShowQuestionNumber.innerHTML = `Frage ${questionCount + 1} von ${questions[0][topic].length}`;
 };
 
-function checkAnswer(i) {
+function checkAnswer(chosedAnswer) {
     answerLimit++;
 
     if (answerLimit === 1) {
 
-        let chosedAnswer = i;
         let rightAnswer = questions[0][topic][questionCount]['right_answer'];
 
         if (chosedAnswer === rightAnswer) {
-            document.getElementById(`question-card${i}`).classList.add('rightAnswer');
+            document.getElementById(`question-card${chosedAnswer}`).classList.add('rightAnswer');
             rightAnswerCount++;
+            document.getElementById('arrow-left').disabled = false;
+            document.getElementById('arrow-right').disabled = false;
         }
 
         else {
-            document.getElementById(`question-card${i}`).classList.add('wrongAnswer');
+            document.getElementById(`question-card${chosedAnswer}`).classList.add('wrongAnswer');
+            document.getElementById(`question-card${rightAnswer}`).classList.add('rightAnswer');
+            document.getElementById('arrow-left').disabled = false;
+            document.getElementById('arrow-right').disabled = false;
         }
 
     }
