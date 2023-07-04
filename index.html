@@ -16,7 +16,7 @@
 
 <body onload="init()">
     <div class="progress-bar" id="progress-bar">
-        <div class="progress1" id="progress1"></div>
+        <div class="progress" id="progress" style="width: 0%;"></div>
     </div>
 
     <div class="card">
@@ -57,7 +57,14 @@
     </div>
     </div>
     <div class="nav-bottom" id="nav-bottom">
-       
+    </div>
+    <div class="popup-background" id="popup-background" onclick="closePopup()" style="display: none;">
+    <div class="popup" id="popup" onclick="notClose(event)">
+        <h2>Share your result via Social Media:</h2>
+        <input type="text" value="" id="input">
+        <button onclick="closePopup()">SHARE RESULT</button>
+    </div>
+        
     </div>
 
 </body>

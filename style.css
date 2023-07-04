@@ -8,7 +8,6 @@ body {
 }
 
 .progress-bar {
-
     width: 100%;
     height: 24px;
     background-color: rgb(174 174 174);
@@ -16,31 +15,12 @@ body {
     top: 0;
     right: 0;
     left: 0;
-
 }
 
-.progress1 {
-    width: 0%;
+.progress {
     height: 24px;
     background-color: rgb(39 53 91);
     border-radius: 0 16px 16px 0;
-
-}
-
-.progress2 {
-    width: 25%;
-}
-
-.progress3 {
-    width: 50%;
-}
-
-.progress4 {
-    width: 75%;
-}
-
-.progress5 {
-    width: 100%;
 }
 
 .card {
@@ -214,9 +194,19 @@ button:hover {
 .nav-bottom {
     display: flex;
     justify-content: space-between;
-    width: 840px;
+    width: 1000px;
     margin-top: 16px;
-    margin-left: 148.94px;
+    
+}
+
+.nav-bottom-placeholder {
+    width: 148.94px;
+}
+
+.nav-bottom-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .arrow-icon {
@@ -284,4 +274,47 @@ h3 {
 
 .hide {
     display: none;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    margin-top: -300px;
+    /* Negative half of height. */
+    margin-left: -250px;
+    /* Negative half of width. */
+    background-color: rgb(255, 255, 255);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Open Sans', sans-serif;
+    gap: 32px;
+    font-weight: 800;
+}
+
+.popup-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(128, 128, 128, 0.50);
+}
+
+.popup input {
+    border-width: 0;
+    width: 250px;
+}
+
+.popup input:focus {
+    outline: 0;
+}
+
+#questionCount {
+    font-family: 'PT Sans', sans-serif;
 }
