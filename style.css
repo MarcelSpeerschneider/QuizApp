@@ -318,3 +318,77 @@ h3 {
 #questionCount {
     font-family: 'PT Sans', sans-serif;
 }
+
+@media (max-width: 1000px) {
+    body {
+        margin: 8px;
+    }
+    .card {
+        min-width: 100%;
+        flex-direction: column;
+    }
+    .logo {
+        height: 50px;
+        position: static;
+        margin-left: 8px;
+    }
+    nav {
+        width: 100%;
+        flex-direction: row;
+        font-size: 1.2em;
+        border-radius: 16px 16px 0px 0px;
+        height: 100px;
+        text-align: center;
+    }
+    .links {
+        width: 100%;
+        flex-direction: row;
+        gap: 0;
+        justify-content: space-between;
+    }
+
+    .link {
+        width:  100%;
+    }
+    .content-question {
+        width: 100%;
+    }
+    .question-card {
+        width: 90%;
+        font-size: 1.2em;
+    }
+    .letter {
+        font-size: 1.1em;
+    }
+    .quiz-container-background {
+        border-radius: 0 0 16px 16px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+        text-align: center;
+    }
+    .nav-bottom {
+        width: 100%;
+    }
+    .nav-bottom-placeholder {
+        display: none;
+    }
+    h2 {
+        font-size: 1.2em;
+        margin-top: 8px;
+
+
+    }
+    .button-start-position {
+        bottom: 5px;
+        right: 5px;
+    }
+}
+
+@media (max-width: 390px) {
+    nav {
+        font-size: 0.8em;
+        gap: 5px;
+    }
+}
