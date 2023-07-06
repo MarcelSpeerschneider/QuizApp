@@ -191,7 +191,7 @@ function CompletionPage() {
     <span class="score">YOUR SCORE: ${rightAnswerCount}/4</span>
     </div>
     <button class="share-button" onclick="showPopup()">SHARE</button>
-    <a href="./index.html"><button class="button-start-position">Back to Start</button></a>
+    <a href="./index.html"><button class="button-start-position" id="back-to-start">Back to Start</button></a>
     `;
 }
 
@@ -202,17 +202,6 @@ function removeBackground() { //bei allen 4 Fragen werden die Hintergründe entf
     }
 }
 
-function navigateQuestionsBackward() { // eine Frage zurück gehen
-    if (questionCount > 0) {
-        questionCount--;
-        init();
-    } else {
-        questionCount = 0;
-        init();
-    };
-    answerLimit = 0;
-}
-
 function updateProgressBar() {
     let percentage = (questionCount + 1) / questions[0][topic].length;
     percentage = percentage * 100;
@@ -220,12 +209,10 @@ function updateProgressBar() {
 }
 
 function hideNavigationArrows() {
-    document.getElementById('arrow-left').classList.add('hide'); // Ausblenden der Pfeile
     document.getElementById('arrow-right').classList.add('hide');
 }
 
 function showNavigationArrows() {
-    document.getElementById('arrow-left').disabled = true; // die Navigationspfeile werden deaktiviert
     document.getElementById('arrow-right').disabled = true;
 }
 
@@ -264,12 +251,8 @@ function showQuestion() { // Die Fragen werden in den Question-Cards hinzugefüg
             <div class="nav-bottom-placeholder"></div> 
             <div class="nav-bottom-container">
                 <a>
-                <button class="arrow-icon" id="arrow-left" onclick="navigateQuestionsBackward()" disabled><img
-                src="./img/chevron-left-black.svg"></button>
-                </a>
-                <a>
                 <button class="arrow-icon" id="arrow-right" onclick="navigateQuestionsForward()" disabled><img
-                src="./img/chevron-right-black.svg"></button>
+                src="./img/chevron-right-black.svg" id="arrow-img"></button>
                 </a>
             </div>
             `;
@@ -292,24 +275,21 @@ function checkAnswer(chosenAnswer) {
             document.getElementById(`question-card${chosenAnswer}`).classList.add('rightAnswer');
             AUDIO_SUCCESS.play();
             rightAnswerCount++; // Der Zähler für die richtige Antwort wird um 1 erhöht
-            disableNavigationArrows();
+            enableNavigationArrows();
         } else {
             document.getElementById(`question-card${chosenAnswer}`).classList.add('wrongAnswer'); // bei einer falschen Antwort, wird sowohl die falsche als auch die richtige markiert
             document.getElementById(`question-card${rightAnswer}`).classList.add('rightAnswer');
             AUDIO_FAIL.play();
             enableNavigationArrows();
+
         }
     }
 }
 
-function disableNavigationArrows() {
-    document.getElementById('arrow-left').disabled = false; // Die Navigationspfeile werden wieder aktiviert
-    document.getElementById('arrow-right').disabled = false;
-}
-
 function enableNavigationArrows() {
-    document.getElementById('arrow-left').disabled = false; // Navigationspfeile werden aktiviert
     document.getElementById('arrow-right').disabled = false;
+    document.getElementById('arrow-right').style = "background-color: #9db1e786";
+    document.getElementById('arrow-img').style.cursor = "pointer";
 }
 
 function showPopup() {
